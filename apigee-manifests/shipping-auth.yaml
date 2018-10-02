@@ -1,0 +1,13 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: Policy
+metadata:
+  name: shipping-auth-spec
+  namespace: default
+spec:
+  targets:
+  - name: shipping
+  origins:
+  - jwt:
+      issuer: https://amer-demo13-test.apigee.net/istio-auth/token
+      jwks_uri: https://amer-demo13-test.apigee.net/istio-auth/certs
+  principalBinding: USE_ORIGIN

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+  labels:
+    app: shipping
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: shipping
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: shipping
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: gcr.io/nandanks-151422/shipping:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: shipping-dest-rule
+  namespace: default
+spec:
+  host: shipping
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+  subsets:
+  - labels:
+      app: shipping
+    name: v1
