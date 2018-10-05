@@ -23,8 +23,8 @@ kubectl apply -f route-rule-frontend-80-20.yaml
 #Setup for API demo:
 #required steps to setup the environment for the api section of the demo
 
-kubectl delete -f frontend-blue.yaml
 kubectl apply -f route-rule-frontend-default-api.yaml
+kubectl delete -f frontend-blue.yaml
 kubectl delete -f frontend-destination.yaml
 ```
 
@@ -33,6 +33,7 @@ kubectl delete -f frontend-destination.yaml
 
 **API Management demo**
 
+kubectl apply -f route-rule-frontend-default-api.yaml
 
 ```
 #the API demo breaks the frontend UX
