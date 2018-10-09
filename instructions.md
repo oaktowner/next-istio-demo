@@ -33,9 +33,10 @@ kubectl delete -f frontend-destination.yaml
 
 **API Management demo**
 
-kubectl apply -f route-rule-frontend-default-api.yaml
 
 ```
+kubectl apply -f route-rule-frontend-default-api.yaml
+
 #the API demo breaks the frontend UX
 #set the ingress ip
 export GATEWAY=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
