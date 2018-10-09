@@ -5,25 +5,25 @@
 
 ```
 kubectl get pods
+
+cat frontend-destination.yaml
+kubectl apply -f frontend-destination.yaml
+
+cat route-rule-frontend-100.yaml
+kubectl apply -f route-rule-frontend-100.yaml
+
 kubectl apply -f frontend-blue.yaml
 kubectl get pods
 
-vi frontend-destination.yaml
 
-kubectl apply -f frontend-destination.yaml
-
-vi route-rule-frontend-100.yaml
-
-kubectl apply -f route-rule-frontend-100.yaml
-
-vi route-rule-frontend-80-20.yaml
+cat route-rule-frontend-80-20.yaml
 
 kubectl apply -f route-rule-frontend-80-20.yaml
 
 #Setup for API demo:
 #required steps to setup the environment for the api section of the demo
 
-kubectl apply -f route-rule-frontend-default-api.yaml
+kubectl apply -f route-rule-frontend-default.yaml
 kubectl delete -f frontend-blue.yaml
 kubectl delete -f frontend-destination.yaml
 ```
@@ -102,7 +102,7 @@ https://apigee.com/platform/amer-demo13/developer-engagement
 
 
 ```
-kubectl apply -f route-rule-frontend-default-api.yaml
+kubectl apply -f route-rule-frontend-default.yaml
 kubectl delete -f frontend-blue.yaml
 kubectl delete -f frontend-destination.yaml
 ```
